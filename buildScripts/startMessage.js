@@ -1,3 +1,3 @@
-const chalk = require("chalk")
+import { green } from "chalk"
 
-console.log(chalk.green("Starting your app in dev mode..."))
+console.log(green("Starting your app in dev mode..."))
