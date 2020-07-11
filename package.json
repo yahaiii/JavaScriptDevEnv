@@ -4,9 +4,12 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel open:src deploy",
+    "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node buildScripts/srcServer.js",
-    "deploy": "surge ./src"
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch",
+    "surge": "surge ./src",
+    "deploy": "npm-run-all --parallel open:src surge"
   },
   "author": "Cory House",
   "license": "MIT",
@@ -25,8 +28,12 @@
     "compression": "^1.7.4",
     "cross-env": "3.1.3",
     "css-loader": "0.25.0",
-    "eslint": "3.8.1",
+    "eslint": "^3.8.1",
+    "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "eslint-watch": "2.1.14",
     "express": "^4.17.1",
     "extract-text-webpack-plugin": "1.0.1",
